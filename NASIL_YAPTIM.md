@@ -87,6 +87,17 @@ Bu tablodan çıkardığım sonuçlar:
 
 Kısacası, bu veride uzun vadede en önemli şey **modeli güncel tutmak**. Bu da MLOps'un çözmeye çalıştığı problemin ta kendisi.
 
+## Neden zamana göre bölmeyi değiştirmedim
+
+Bu veriyi rastgele bölmek çok daha yüksek skorlar veriyor. Ama o zaman model 2010 görüşmelerini görerek 2008'i tahmin edebiliyor; yani geleceği bilerek geçmişi tahmin ediyor. Gerçek hayatta banka geleceği bilemez. Farkı görmek için orijinal ders modelini iki şekilde ölçtüm:
+
+| Orijinal model | ROC-AUC |
+|---|---|
+| Zamana göre bölme (dersin kuralı) | 0.661 |
+| Rastgele bölme | 0.800 |
+
+Aynı model, sadece bölme şekli değişince 0.66'dan 0.80'e çıkıyor. Yani rastgele bölmeyle elde edilen skorlar, zamana göre bölmeyle elde edilenlerle karşılaştırılamaz. Ben bütün sonuçlarımı dersin zamana göre bölmesiyle ölçtüm.
+
 ## Kodu nasıl düzenledim
 
 - Bütün importları tek hücrede, ayarları (dosya yolu, split oranları, çıkarılan sütunlar, ağırlık, regularization ve yeniden eğitim sıklığı) tek hücrede topladım.
